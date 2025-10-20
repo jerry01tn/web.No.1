@@ -1,0 +1,57 @@
+<html>
+<head>
+    <title>css動畫</title>
+    <style>
+         div{
+             margin: 5px;
+        }
+        @keyframes k1 {
+                0%{background: linear-gradient(90deg,red,white 50%,blue)}
+                13%{background: linear-gradient(90deg,red,white 70%,blue)}
+                25%{background: linear-gradient(90deg,red,white 90%,blue)}
+                37%{background: linear-gradient(90deg,red,white 70%,blue)}
+                50%{background: linear-gradient(90deg,red,white 50%,blue)}
+                63%{background: linear-gradient(90deg,red,white 30%,blue)}
+                75%{background: linear-gradient(90deg,red,white 10%,blue)}
+                87%{background: linear-gradient(90deg,red,white 30%,blue)}
+                100%{background: linear-gradient(90deg,red,white 50%,blue)}}
+        #a1 {
+            height: 50px;
+            width: 400px;
+            animation: k1 1s infinite linear;
+        }
+        @keyframes k2 {
+                0%{background: linear-gradient(0deg,red,white 50%,blue)}
+                8%{background: linear-gradient(30deg,red,white 70%,blue)}
+                17%{background: linear-gradient(60deg,red,white 90%,blue)}
+                25%{background: linear-gradient(90deg,red,white 70%,blue)}
+                33%{background: linear-gradient(120deg,red,white 50%,blue)}
+                42%{background: linear-gradient(150deg,red,white 30%,blue)}
+                50%{background: linear-gradient(180deg,red,white 10%,blue)}
+                58%{background: linear-gradient(210deg,red,white 30%,blue)}
+                66%{background: linear-gradient(240deg,red,white 50%,blue)}
+                75%{background: linear-gradient(270deg,red,white 50%,blue)}
+                83%{background: linear-gradient(300deg,red,white 50%,blue)}
+                92%{background: linear-gradient(330deg,red,white 50%,blue)}
+                100%{background: linear-gradient(360deg,red,white 50%,blue)}}
+        #a2{
+            height: 200px;
+            width: 400px;
+            animation: k2 400ms infinite linear; 
+        }
+         @keyframes k3{
+            0%{background: linear-gradient(circle,yellow,white 50%,black)}
+            25%{background: linear-gradient(circle,yellow,white 50%,black)}
+            50%{background: linear-gradient(circle,yellow,white 50%,black)}
+            75%{background: linear-gradient(circle,yellow,white 50%,black)}
+            100%{background: linear-gradient(circle,yellow,white 50%,black)}}
+               
+
+    </style>
+</head>
+<body>
+    <div id="a1"></div>        
+    <div id="a2"></div>           
+   
+</body>
+</html>
