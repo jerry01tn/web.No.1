@@ -1,0 +1,64 @@
+<html>
+<head>
+    <title>位移及變形</title>
+    <style>
+        /*
+            position: relative/absolute
+            relative: 相對於自己本來的位子
+            absolute: 相對於有設定過position的父容器(或body)
+        top/left: 距離上方/左邊*/
+        #d7 {
+            width: 100px;
+            height:100px;
+            background: skyblue; 
+        }
+        #d8 {
+            width: 100px;
+            height: 100px;
+            background: seagreen;
+            position: relative;
+            top: 20px;
+            left: 40px;
+        }
+        #d9 {
+            height: 100px;
+        }
+        #d10 {
+            width: 400px;
+            height: 300px;
+            border: 1px solid black;
+            position: relative;
+        }
+        #d11 {
+            width: 100px;
+            height: 100px;
+            background: lightslategray;
+        }
+        #d12 {
+            width: 100px;
+            height: 100px;
+            background: lightcoral;
+            position: absolute;
+            top: 20px;
+            left: 40px;
+        }
+        /** transform:變形
+            rotate */
+        #d13 {
+            width: 200px;
+            height: 100px;
+            background: lightsteelblue;
+            transform: rotate(90deg) translate(50px,20px) scale(1,2);
+        }
+    </style>
+</head>
+<body>
+    <div id="d7"></div>
+    <div id="d8"></div>
+    <div id="d9"></div>
+    <div id="d10"></div>
+    <div id="d11"></div>
+    <div id="d12"></div>
+    <div id="d13"></div>
+</body>
+</html>
