@@ -1,0 +1,63 @@
+<html>
+<head>
+    <title>字形漸變及陰影</title>
+    <style>
+        #d1{
+            width: 260px;
+            height: 260px;
+            background-color: red;
+            transition: width 0.75s, height 0.756s, background 0.5s;
+        }
+        #d1:hover{
+            width: 245px;
+            height: 245px;
+            background-color: rgba(255, 0, 0, 0.658);   
+        }
+        body {font-size: 16px;}
+        #d2{
+            margin:10px 0px;
+            font-size: 45px;/*px pt em vw vh*/
+            font-family:sans-serif;/* 無襯線體\黑體\圓體*/
+        }
+        #d3{
+            margin:10px 0px;
+            font-size: 45px;/*px pt em vw vh*/
+            font-family:"LXGW Wenkai TC",serif;
+            font-weight: normal;
+        }
+        #d4{
+            margin:10px 0px;
+            font-size: 45px;/*px pt em vw vh*/
+            font-family:monospace;/*等寬字體*/
+        }
+        #d5{
+            width: 200px;
+            box-shadow: black 5px 5px 10px;
+        }
+        #d6{
+            margin: 50px 0px;
+            width: 200px;
+            color: white;
+            text-shadow: goldenrod 2px 2px 2px;
+        }
+        #d7{
+            width: 100px;
+            height: 40px;
+            background: linear-gradient(90deg, red,white,blue);
+            transition: transform 1.5s
+        }
+        #d7:hover{
+            width: 200px;
+        }
+    </style>
+<body>
+    <div id="d1"></div>
+    <div id="d2">鳳新高中<br>fhsh</div>
+    <div id="d3">鳳新高中<br>fhsh</div>
+    <div id="d4">鳳新高中<br>fhsh</div>
+    <div id="d5">鳳新高中<br>fhsh</div>
+    <div id="d6">鳳新高中<br>fhsh</div>
+    <div id="d7"></div>
+</body>
+</head>
+</html>
