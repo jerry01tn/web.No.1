@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>1208</title>
+    <style>
+        #map{
+            width: 800px;
+            height: 800px;
+            background: url("pic/grass.jpg");
+            background-size: 30%;
+            /*background-repeat: repeat;*/
+            animation: bg_move 2s linear infinite;
+        }
+        @keyframes bg_move{
+            0%{background-position: 0% 0%;}
+            30%{background-position: 5px 0%;}
+            100%{background-position: 0% 0%;}
+        }
+        #role{
+            width: 48px;
+            height: 72px;
+            background-image: url("pic/sprite.png");
+            background-position: -288px -144px;
+            animation: walking 0.65s steps(3) infinite;
+            position: absolute;
+        }
+        @keyframes walking{
+            0%{background-position-x: -288px;}
+            100%{background-position-x: -432px;}
+        }
+    </style>
+    <script>
+        function mykeydown(){
+            event.preventDefault();
+            var role=document.getElementById("role");
+            if(event.key=="ArrowDown"){
+                role.style.backgroundPositionY="0px";
+                if(role.posY<728)role.posY++;
+            }else if(event.key=="ArrowLeft"){
+                role.style.backgroundPositionY="-72px";
+                if(role.posY>0)role.posY--;
+            }else if(event.key=="ArrowRight"){
+                role.style.backgroundPositionY="-144px";
+                if(role.posX<728)role.posX++;
+            }else if(event.key=="ArrowUp"){
+                role.style.backgroundPositionY="-216px";
+                if(role.posX>0)role.posX--;
+            }
+        }
+        function page_init(){
+            var role=document.getElementById("role");
+            role.posX=0;
+            role.posY=0;
+        }
+    </script>
+</head>
+<body onload="page_inlit();" onkeydown="mykeydown();">
+    <div id="map">
+        <div id="role"></div>
+    </div>
+</body>
+</html>
