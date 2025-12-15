@@ -1,0 +1,112 @@
+<html>
+<head>
+    <title>1215-宇宙射擊遊戲</title>
+    <style>
+        #space {
+            width:800px;
+            height:800px;
+            background: url("pic/bg_stars.jpg");
+            animation: bg_move 0.75s linear infinite;
+        }
+        @keyframes bg_move {
+            0%{background-position-y: 0px;}
+            100%{background-position-y: 216px;}
+        }
+        #ship {
+            width: 40px;
+            height: 60px;
+            background: url("pic/ship.png");
+            background-size: 40px 60px;
+            position: absolute;
+        }
+        .ufo {
+            width: 45px;
+            height: 30px;
+            background: url("pic/ufo.png");
+            background-size: 45px 30px;
+            position: absolute;
+        }
+        .bullet {
+            width:4px;
+            height:6px;
+            background-color: rgb(172, 255, 251);
+            position: absolute;
+        }
+    </style>
+    <script>
+        function game_init() {
+            dir={"ArrowLeft":0,"ArrowRight":0,"ArrowUp":0,"ArrowDown":0}
+            space={w:800,h:800};
+            ship=document.getElementById("ship");
+            ship.w=40;
+            ship.h=60;
+            ship.posX=(space.w-ship.w)/2;
+            ship.posY=space.h-ship.h;
+            ship.style.left=ship.posX+"px";
+            ship.style.top=ship.posY+"px";
+        }
+        function mykeydown() {
+            event.preventDefault();
+            dir[event.key]=1;
+        }
+        function mykeyup() {
+            event.preventDefault();
+            dir[event.key]=0;
+        }
+        function getRand(min,max) {
+            return Math.floor(Math.random()*(max-min+1))+min;
+        }
+        function ship_move() {
+            if(ship.posX>0&&dir["ArrowLeft"]){
+                ship.posX--;
+            }else if(ship.posX+ship.w<space.w&&dir["ArrowRight"]){
+                ship.posX++;
+            }ship.style.left=ship.posX+"px";
+        }
+        function ufo_move(ufo) {
+            if(ufo.posY+ufo.h>space.h){
+                clearInterval(ufo.move);
+                ufo.remove();
+                return;
+            }
+            ufo.posY++;
+
+        }
+        function ufo_create() {
+            var u=document.createElement("img");
+            u.scr="pic/ufo.png";
+            u.className="ufo";
+            u.w=60;
+            u.h=40;
+            u.posX=getRand(0,space.w-u.w);
+            u,posY=getRand(0,10);
+            document.getElementById("space").appendChild(u);
+            u.style.left=u.posX+"px";
+            u.style.top=u.posY+"px";
+            u.move=setInterval(ufo_move,20,u);
+        }
+        function bullet_move(bt) {
+            if(bt.posY<0){
+                clearInterval(bt.move);
+                bt.remove();
+                return;
+            }
+            bt.posY--;
+            bt.style.top=bt.posY+"px";
+        }
+        function bullet_create() {
+            var b=document.createElement("div");
+            b.className="bullet";
+            b.w=4;
+            b.h=6;
+            b.posX=ship.posX+(ship.w-b.w)/2;
+        }
+    </script>
+</head>
+<body onload="game_init()" onkeydown="mykeydown()" onkeyup="mykeyup()">
+    <div id="space">
+        <div id="ship"></div>
+        <div id="ufo"></div>
+    </div>
+</body>
+</html>
