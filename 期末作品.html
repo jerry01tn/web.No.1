@@ -1,0 +1,99 @@
+<html>
+<head>
+    <title>1208</title>
+    <style>
+        #map{
+            width: 800px;
+            height: 800px;
+            background: url("pic/grass.jpg");
+            background-size: 30%;
+            /*background-repeat: repeat;*/
+            animation: bg_move 2s linear infinite;
+            position: relative;
+        }
+        @keyframes bg_move{
+            0%{background-position: 0% 0%;}
+            30%{background-position: 5px 0%;}
+            100%{background-position: 0% 0%;}
+        }
+        #role{
+            width: 48px;
+            height: 72px;
+            background-image: url("pic/sprite.png");
+            background-position: -288px -144px;
+            animation: walking 0.5s steps(3) infinite;
+            position: absolute;
+        }
+        @keyframes walking{
+            0%{background-position-x: -288px;}
+            100%{background-position-x: -432px;}
+        }
+        #box{
+            width: 58px;
+            height: 58px;
+            background-image: url("pic/box.close (2).png");
+            background-size: 98%;
+            position: relative;
+            
+        }
+    </style>
+    <script>
+        function mykeydown(){
+            event.preventDefault();
+            var role=document.getElementById("role");
+            if(event.key=="ArrowDown"){
+                role.style.backgroundPositionY="0px";
+                if(role.posY<728)role.posY+=2.5;
+            }else if(event.key=="ArrowLeft"){
+                role.style.backgroundPositionY="-72px";
+                if(role.posX>0)role.posX-=2.5;
+            }else if(event.key=="ArrowRight"){
+                role.style.backgroundPositionY="-144px";
+                if(role.posX<752)role.posX+=2.5;
+            }else if(event.key=="ArrowUp"){
+                role.style.backgroundPositionY="-216px";
+                if(role.posY>0)role.posY-=2.5;
+            }
+            role.style.left=role.posX+"px";
+            role.style.top=role.posY+"px";
+            find();
+        }
+        function page_init(){
+            var role=document.getElementById("role");
+            role.posX=0;
+            role.posY=0;
+            var box = document.getElementById("box");
+            var randomX = Math.floor(Math.random() * 742);
+            box.style.left = randomX + "px";
+            var randomY = Math.floor(Math.random() * 742);
+            box.style.top = randomY + "px";
+            box.posX = randomX;
+            box.posY = randomY;
+            // 套用到 CSS
+            box.style.position = "absolute"; // 確保是絕對定位
+            box.style.left = randomX + "px";
+            box.style.top = randomY + "px";
+        }
+        function find(){
+            var role = document.getElementById("role");
+            var box = document.getElementById("box");
+            if (Math.abs(role.posX - box.posX) < 40 && Math.abs(role.posY - box.posY) < 40) {
+            box.style.backgroundImage = "url('pic/box.open (2).png')"; 
+            
+            // 使用 setTimeout 讓玩家先看到開箱圖，再跳出警示視窗
+            setTimeout(function() {
+                alert("你找到了寶藏！");
+                location.reload(); 
+            }, 100);
+        }
+        };
+        
+    </script>
+</head>
+<body onload="page_init();" onkeydown="mykeydown();">
+    <div id="map">
+        <div id="role"></div>
+        <div ArrowOn="find();" id="box"></div>
+    </div>
+</body>
+</html>
