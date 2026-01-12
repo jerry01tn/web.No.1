@@ -69,7 +69,6 @@
             box.style.top = randomY + "px";
             box.posX = randomX;
             box.posY = randomY;
-            // 套用到 CSS
             box.style.position = "absolute"; // 確保是絕對定位
             box.style.left = randomX + "px";
             box.style.top = randomY + "px";
@@ -80,7 +79,7 @@
             if (Math.abs(role.posX - box.posX) < 40 && Math.abs(role.posY - box.posY) < 40) {
             box.style.backgroundImage = "url('pic/box.open (2).png')"; 
             
-            // 使用 setTimeout 讓玩家先看到開箱圖，再跳出警示視窗
+            // 讓玩家先看到寶箱打開，再跳出alert
             setTimeout(function() {
                 alert("你找到了寶藏！");
                 location.reload(); 
